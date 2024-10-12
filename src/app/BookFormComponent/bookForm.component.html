@@ -1,0 +1,22 @@
+<!--bookform.component.html-->
+
+<div class="cards-form">
+    <h2>{{ editBook ? 'Edit Book' : 'Add Book' }}</h2>
+    <div class="form-group">
+      <label>Title</label>
+      <input [(ngModel)]="book.title" placeholder="Title" />
+    </div>
+    <div class="form-group">
+      <label>Author</label>
+      <input [(ngModel)]="book.author" placeholder="Author" />
+    </div>
+    <div class="form-group">
+      <label>In Stock</label>
+      <input type="checkbox" [(ngModel)]="book.isInStock" />
+    </div>
+    <div class="form-group">
+      <button (click)="submitForm()">{{ editBook ? 'Save Changes' : 'Add Book' }}</button>
+      <button *ngIf="editBook" (click)="onCancel.emit()">Cancel</button>
+    </div>
+  </div>
+  

@@ -1,4 +1,23 @@
 .container {
+  padding: 3em;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  width: 100%;
+  padding-top: 5em;
+}
+
+
+
+
+/* .container {
     padding: 3em;
     max-width: 1000px;
     margin: 0 auto;
@@ -101,4 +120,4 @@
   }
   
   
-  
+   */
