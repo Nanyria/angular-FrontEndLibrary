@@ -6,13 +6,14 @@ import { BookService } from './Services/book.services';
 import { Book } from './Models/book';
 import { BookListComponent } from './BookListComponent/bookList.component';
 import { BookFormComponent } from './BookFormComponent/bookForm.component';
+import { BuilderPage } from './components/builder-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html', // Split into a separate HTML file
   styleUrls: ['./app.component.css'],  // Split into a separate CSS file
-  imports: [CommonModule, BookListComponent, BookFormComponent]
+  imports: [CommonModule, BookListComponent, BookFormComponent, BuilderPage]
 })
 export class AppComponent {
   title = 'angular-FrontEndLibrary';

@@ -1,22 +1,35 @@
 <!--bookform.component.html-->
 
 <div class="cards-form">
-    <h2>{{ editBook ? 'Edit Book' : 'Add Book' }}</h2>
+  <h2>{{ editBook ? 'Edit Book' : 'Add Book' }}</h2>
+  <form (ngSubmit)="submitForm()">
     <div class="form-group">
       <label>Title</label>
-      <input [(ngModel)]="book.title" placeholder="Title" />
+      <input [(ngModel)]="book.title" name="title" placeholder="Title" required />
     </div>
     <div class="form-group">
       <label>Author</label>
-      <input [(ngModel)]="book.author" placeholder="Author" />
+      <input [(ngModel)]="book.author" name="author" placeholder="Author" required />
+    </div>
+    <div class="form-group">
+      <label>Genre</label>
+      <input [(ngModel)]="book.genre" name="genre" placeholder="Genre" required />
+    </div>
+    <div class="form-group">
+      <label>Book Description</label>
+      <input [(ngModel)]="book.bookDescription" name="bookDescription" placeholder="bookDescription" required />
+    </div>
+    <div class="form-group">
+      <label>Publication Year</label>
+      <input [(ngModel)]="book.publicationYear" name="publicationYear" placeholder="publicationYear" required />
     </div>
     <div class="form-group">
       <label>In Stock</label>
-      <input type="checkbox" [(ngModel)]="book.isInStock" />
+      <input type="checkbox" [(ngModel)]="book.isInStock" name="isInStock" />
     </div>
     <div class="form-group">
-      <button (click)="submitForm()">{{ editBook ? 'Save Changes' : 'Add Book' }}</button>
-      <button *ngIf="editBook" (click)="onCancel.emit()">Cancel</button>
+      <button type="submit">{{ editBook ? 'Save Changes' : 'Add Book' }}</button>
+      <button type="button" *ngIf="editBook" (click)="onCancel.emit()">Cancel</button>
     </div>
-  </div>
-  
+  </form>
+</div>

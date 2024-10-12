@@ -16,17 +16,10 @@
             "outputPath": "dist/angular-front-end-library",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
@@ -63,8 +56,8 @@
           "options": {
             "proxyConfig": "proxy.conf.json",
             "ssl": true,
-            "sslKey": "C:/Users/Natha/source/repos/Avancerad systemutveckling ASP/Labb2LibraryAngular/UI/cert/key.pem",
-            "sslCert": "C:/Users/Natha/source/repos/Avancerad systemutveckling ASP/Labb2LibraryAngular/UI/cert/cert.pem"
+            "sslKey": "C:/Users/Natha/key.pem",
+            "sslCert": "C:/Users/Natha/certificate.pem"
           },
           "configurations": {
             "production": {
@@ -85,18 +78,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }
