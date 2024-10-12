@@ -61,7 +61,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "proxyConfig": "proxy.conf.json"
+            "proxyConfig": "proxy.conf.json",
+            "ssl": true,
+            "sslKey": "C:/Users/Natha/source/repos/Avancerad systemutveckling ASP/Labb2LibraryAngular/UI/cert/key.pem",
+            "sslCert": "C:/Users/Natha/source/repos/Avancerad systemutveckling ASP/Labb2LibraryAngular/UI/cert/cert.pem"
           },
           "configurations": {
             "production": {
