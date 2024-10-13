@@ -4,6 +4,7 @@ import { BookFormComponent } from "./BookFormComponent/bookForm.component";
 import { BookListComponent } from "./BookListComponent/bookList.component";
 import { BuilderPage } from "./components/builder-page.component";
 import { Counter } from "./components/counter.component";
+import { LandingPageComponent } from "./landing-page/landing-page.component";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -49,5 +50,9 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         type: "number",
       },
     ],
+  },
+  {
+    component: LandingPageComponent,
+    name: "LandingPageComponent",
   },
 ];

@@ -1,6 +1,14 @@
 import { Routes } from '@angular/router';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BuilderPage } from './components/builder-page.component';
 
 export const routes: Routes = [
-  { path: 'builder-demo', component: BuilderPage }
+  {
+    path: '',
+    component: LandingPageComponent,
+  },
+  {
+    path: '**',
+    component: BuilderPage,
+  },
 ];
