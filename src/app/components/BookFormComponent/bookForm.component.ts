@@ -3,7 +3,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Book } from '../Models/book';
+import { Book } from '../../Models/book';
 
 @Component({
   selector: 'app-book-form',

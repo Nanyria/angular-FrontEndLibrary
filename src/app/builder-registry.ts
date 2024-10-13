@@ -1,10 +1,15 @@
 import type { RegisteredComponent } from "@builder.io/sdk-angular";
 import { AppComponent } from "./app.component";
-import { BookFormComponent } from "./BookFormComponent/bookForm.component";
-import { BookListComponent } from "./BookListComponent/bookList.component";
+import { BookFormComponent } from "./components/BookFormComponent/bookForm.component";
+import { BookListComponent } from "./components/BookListComponent/bookList.component";
+import { BookTableComponent } from "./components/library/book-table/book-table.component";
 import { BuilderPage } from "./components/builder-page.component";
 import { Counter } from "./components/counter.component";
-import { LandingPageComponent } from "./landing-page/landing-page.component";
+import { FigmaImportsPage } from "./components/figma-imports.component";
+import { HeaderComponent } from "./components/library/header/header.component";
+import { LandingPageComponent } from "./components/landing-page/landing-page.component";
+import { LibraryComponent } from "./components/library/library.component";
+import { SearchComponent } from "./components/library/search/search.component";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -32,6 +37,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
+    component: BookTableComponent,
+    name: "BookTableComponent",
+  },
+  {
     component: BuilderPage,
     name: "BuilderPage",
     inputs: [
@@ -52,7 +61,23 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
+    component: FigmaImportsPage,
+    name: "FigmaImportsPage",
+  },
+  {
+    component: HeaderComponent,
+    name: "HeaderComponent",
+  },
+  {
     component: LandingPageComponent,
     name: "LandingPageComponent",
+  },
+  {
+    component: LibraryComponent,
+    name: "LibraryComponent",
+  },
+  {
+    component: SearchComponent,
+    name: "SearchComponent",
   },
 ];

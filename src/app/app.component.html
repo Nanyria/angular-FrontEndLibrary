@@ -1,26 +1,6 @@
 <!--app.component.html-->
+<app-library></app-library>
 
-<div class="container">
-    <h1>Library Management</h1>
-    
-    <div class="card-container">
-      <!-- Book Form Component -->
-      <app-book-form
-        [editBook]="editBook"
-        (onSubmit)="handleFormSubmit($event)"
-        (onCancel)="cancelEdit()"
-      ></app-book-form>
-  
-      <!-- Book List Component -->
-      <app-book-list
-        [books]="books"
-        (onEdit)="populateForm($event)"
-        (onDelete)="deleteBook($event)"
-        (onToggleStock)="toggleStock($event)"
-      ></app-book-list>
-    </div>
-  </div>
-  
 
 
 

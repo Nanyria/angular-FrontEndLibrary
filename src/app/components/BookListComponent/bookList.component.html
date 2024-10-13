@@ -1,0 +1,31 @@
+
+<table class="table">
+  <thead class="thead">
+    <tr>
+      <th class="th">ID</th>
+      <th class="th-2">Title</th>
+      <th class="th-3">Author</th>
+      <th class="th-7">Genre</th> 
+      <th class="th-4">Year Published</th>
+      <th class="th-5">Description</th>
+      <th class="th-6">Stock</th>
+      <th class="th-8">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="tbody">
+    <tr *ngFor="let book of books">
+      <td>{{ book.bookID }}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.genre }}</td>
+      <td>{{ book.publicationYear }}</td>
+      <td>{{ book.bookDescription }}</td>
+      <td>{{ book.isInStock ? 'In Stock' : 'Out of Stock' }}</td>
+      <td>
+        <button (click)="populateForm(book)">Edit</button>
+        <button (click)="deleteBook(book.bookID)">Delete</button>
+        <button (click)="toggleStock(book)">Toggle Stock</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
