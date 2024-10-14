@@ -1,5 +1,5 @@
 // https://www.builder.io/c/docs/using-your-api-key
 export const environment = {
   production: false,
-  builderApiKey: "0b48fe8e354b4d2f9b80496aa2074bf7",
+  builderApiKey: "289933d79b584be2bce0d9974554f75d",
 };

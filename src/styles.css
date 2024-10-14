@@ -3,12 +3,14 @@ body {
   font-family: Roboto, sans-serif;
   margin: 0; /* Ensure no default margin */
   padding: 0; /* Ensure no default padding */
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
+*, *::before, *::after {
+  box-sizing: inherit; /* Inherit box-sizing from body */
+}
 
 .app-book-list .table {
-  display: flex; /* Change display property to flex */
-  flex-direction: column; /* Add flex-direction property */
   border-radius: 8px;
   background-color: rgba(31, 41, 55, 1);
   box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -16,6 +18,7 @@ body {
   width: 100%;
   padding-bottom: 17px;
   overflow: hidden;
+  border-collapse: collapse; /* Ensure table layout */
 }
 
 @media (max-width: 991px) {
