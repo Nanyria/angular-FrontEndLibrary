@@ -9,7 +9,8 @@
     "test": "ng test",
     "postbuild": "node post-build.js",
     "builder-dev": "concurrently \"ng serve\" \"npx builder-dev-tools\"",
-    "postdeploy": "node post-deploy.js"
+    "postdeploy": "node post-deploy.js",
+    "deploy": "ng deploy --base-href=/angular-frontEndLibrary/"
   },
   "private": true,
   "dependencies": {
