@@ -2,22 +2,21 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { BookService } from './Services/book.services';
 import { Book } from './Models/book';
 import { BookListComponent } from './components/BookListComponent/bookList.component';
 import { BookFormComponent } from './components/BookFormComponent/bookForm.component';
-import { BuilderPage } from './components/builder-page.component';
 import { LibraryComponent } from './components/library/library.component';
 import { HeaderComponent } from './components/library/header/header.component';
 import { SearchComponent } from './components/library/search/search.component';
-
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html', // Split into a separate HTML file
   styleUrls: ['./app.component.css'],  // Split into a separate CSS file
-  imports: [CommonModule, BookListComponent, BookFormComponent, BuilderPage, LibraryComponent, HeaderComponent, SearchComponent]
+  imports: [CommonModule, RouterModule, BookListComponent, BookFormComponent, LibraryComponent, HeaderComponent, SearchComponent]
 })
 export class AppComponent {
   title = 'angular-FrontEndLibrary';
@@ -231,4 +230,3 @@ export class AppComponent {
 //       book = book;
 //     }
 // }
-
