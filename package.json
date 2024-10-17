@@ -10,7 +10,7 @@
     "postbuild": "node post-build.js",
     "builder-dev": "concurrently \"ng serve\" \"npx builder-dev-tools\"",
     "postdeploy": "node post-deploy.js",
-    "deploy": "ng deploy --base-href=/angular-frontEndLibrary/"
+    "deploy": "ng build --configuration production --base-href /angular-frontEndLibrary/ && npx angular-cli-ghpages --dir=dist/angular-front-end-library"
   },
   "private": true,
   "dependencies": {
