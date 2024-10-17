@@ -25,6 +25,7 @@
     "@angular/router": "^18.2.7",
     "@angular/ssr": "^18.2.7",
     "@builder.io/dev-tools": "^1.1.23",
+    "@builder.io/sdk-angular": "^0.2.17",
     "concurrently": "^9.0.1",
     "express": "^4.18.2",
     "gh-pages": "^6.2.0",
