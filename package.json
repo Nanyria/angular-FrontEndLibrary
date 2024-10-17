@@ -7,8 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular-FrontEndLibrary": "node dist/angular-front-end-library/server/server.mjs",
-    "builder-dev": "concurrently \"ng serve\" \"npx builder-dev-tools\""
+    "postbuild": "node post-build.js",
+    "builder-dev": "concurrently \"ng serve\" \"npx builder-dev-tools\"",
+    "postdeploy": "node post-deploy.js"
   },
   "private": true,
   "dependencies": {
@@ -22,7 +23,7 @@
     "@angular/platform-server": "^18.2.7",
     "@angular/router": "^18.2.7",
     "@angular/ssr": "^18.2.7",
-    "@builder.io/dev-tools": "^1.1.20",
+    "@builder.io/dev-tools": "^1.1.23",
     "@builder.io/sdk-angular": "^0.2.17",
     "concurrently": "^9.0.1",
     "express": "^4.18.2",
