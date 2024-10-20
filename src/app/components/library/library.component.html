@@ -1,6 +1,8 @@
 
-  <div class="body">
+  <header>
     <app-header></app-header>
+  </header>
+  <div class="body">
     <app-search></app-search>
     <app-book-list
     [books]="books"
@@ -8,4 +10,5 @@
     (onDelete)="deleteBook($event)"
     (onToggleStock)="toggleStock($event)"
   ></app-book-list>
+  <footer></footer>
 </div>

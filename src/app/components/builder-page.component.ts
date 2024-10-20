@@ -28,6 +28,7 @@ export class BuilderPage {
   title = "builder page";
 
   @Input() model: string = "page"; // Default model is 'page'
+  @Input() urlPath: string = "/"; // Default URL path
 
   apiKey = environment.builderApiKey;
 
@@ -36,13 +37,11 @@ export class BuilderPage {
   customComponents = CUSTOM_COMPONENTS;
 
   async ngOnInit() {
-    const urlPath = window.location.pathname || "/";
-
     const builderContent = await fetchOneEntry({
       model: this.model,
       apiKey: this.apiKey,
       userAttributes: {
-        urlPath,
+        urlPath: this.urlPath,
       },
     });
 

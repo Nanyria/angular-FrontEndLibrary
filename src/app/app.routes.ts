@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
-import { LibraryComponent } from './components/library/library.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BuilderPage } from './components/builder-page.component';
+import { LibraryComponent } from './components/library/library.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/library', pathMatch: 'full' },
-  { path: 'library', component: LibraryComponent },
-  { path: 'builder-demo', component: BuilderPage }, 
-  { path: '**', redirectTo: '/library' } // Wildcard route for a 404 page
+
+  { path: 'landing-page', component: LandingPageComponent },
+  { path: 'builder-page', component: BuilderPage },
+  {path: 'library', component: LibraryComponent}
+
 ];
