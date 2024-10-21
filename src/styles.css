@@ -1,5 +1,12 @@
-/* General styles for header and body */
-header, body {
+
+header{
+  background-color: rgba(17, 24, 39, 1);
+  font-family: Roboto, sans-serif;
+  margin: 0; /* Ensure no default margin */
+  padding: 0; /* Ensure no default padding */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+body {
   background-color: rgba(17, 24, 39, 1);
   font-family: Roboto, sans-serif;
   margin: 0; /* Ensure no default margin */
@@ -66,72 +73,59 @@ header, body {
   cursor: not-allowed;
 }
 
-/* Specific styles for book list */
-.app-book-list .table {
-  border-radius: 8px;
-  background-color: rgba(31, 41, 55, 1);
-  box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
-  margin-top: 24px;
-  width: 100%;
-  padding-bottom: 17px;
+/* Table styles */
+.table {
+  border-radius: 8px !important;
+  background-color: rgba(31, 41, 55, 1) !important;
+  box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1) !important;
+  margin-top: 24px !important;
+  width: 100% !important;
+  padding-bottom: 17px !important;
   overflow: hidden;
   border-collapse: collapse; /* Ensure table layout */
 }
 
 @media (max-width: 991px) {
-  .app-book-list .table {
+  .table {
     max-width: 100%;
   }
 }
 
-.app-book-list .thead {
+.thead {
   color: rgba(156, 163, 175, 1);
   text-transform: uppercase;
   background-color: rgba(55, 65, 81, 1);
   font: 600 12px/1 Roboto, sans-serif;
 }
 
-.app-book-list .th {
+.th {
   text-align: left;
   white-space: nowrap;
   padding: 20px 24px;
 }
 
-.app-book-list .th-2, .app-book-list .th-3, .app-book-list .th-4, .app-book-list .th-5, .app-book-list .th-6 {
+.th-2, .th-3, .th-4, .th-5, .th-6, .th-7, .th-8 {
   text-align: left;
   padding: 20px 24px;
 }
 
 @media (max-width: 991px) {
-  .app-book-list .th-2, .app-book-list .th-3, .app-book-list .th-5, .app-book-list .th-6 {
+  .th-2, .th-3, .th-4, .th-5, .th-6, .th-7, .th-8 {
     white-space: initial;
-    padding: 0 20px;
-  }
-  
-  .app-book-list .th-4 {
     padding: 0 20px;
   }
 }
 
-.app-book-list .tbody {
+.tbody {
   color: rgba(255, 255, 255, 1);
   font: 400 16px Roboto, sans-serif;
 }
 
-.app-book-list .tr {
+.tr {
   border-bottom: 1px solid rgba(55, 65, 81, 1);
 }
 
-.app-book-list .td {
-  padding: 10px;
-}
-
-.app-book-list .td-2 {
-  padding: 10px;
-  color: rgba(34, 197, 94, 1);
-}
-
-.app-book-list .td-3 {
-  padding: 10px;
-  color: rgba(239, 68, 68, 1);
+.td {
+  text-align: left;
+  padding: 1px 24px; /* Ensure padding is applied */
 }

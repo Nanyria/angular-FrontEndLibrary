@@ -6,112 +6,33 @@
     width: 100% !important;
     overflow: hidden;
     border-collapse: collapse;
-}
-
-@media (max-width: 991px) {
+  }
+  
+  @media (max-width: 991px) {
     :host ::ng-deep .table {
-        max-width: 100%;
+      max-width: 100%;
     }
-}
-
-:host ::ng-deep .thead {
+  }
+  
+  :host ::ng-deep .thead {
     color: rgba(156, 163, 175, 1) !important;
     text-transform: uppercase !important;
     background-color: rgba(55, 65, 81, 1) !important;
     font: 600 12px/1 Roboto, sans-serif !important;
-}
-
-:host ::ng-deep .th, :host ::ng-deep .th-2, :host ::ng-deep .th-3, :host ::ng-deep .th-4, :host ::ng-deep .th-5, :host ::ng-deep .th-6 {
+  }
+  
+  :host ::ng-deep .th, :host ::ng-deep .th-2, :host ::ng-deep .th-3, :host ::ng-deep .th-4, :host ::ng-deep .th-5, :host ::ng-deep .th-6 {
     text-align: left !important;
     padding: 20px 24px !important;
-}
-
-@media (max-width: 991px) {
+  }
+  
+  @media (max-width: 991px) {
     :host ::ng-deep .th-2, :host ::ng-deep .th-3, :host ::ng-deep .th-5, :host ::ng-deep .th-6 {
-        white-space: initial !important;
-        padding: 0 20px !important;
+      white-space: initial !important;
+      padding: 0 20px !important;
     }
     :host ::ng-deep .th-4 {
-        padding: 0 20px !important;
+      padding: 0 20px !important;
     }
-}
-
-:host ::ng-deep .tbody {
-    color: rgba(255, 255, 255, 1) !important;
-    font: 400 16px Roboto, sans-serif !important;
-}
-
-:host ::ng-deep .tr {
-    border-bottom: 1px solid rgba(55, 65, 81, 1) !important;
-}
-
-:host ::ng-deep .td {
-    padding: 10px !important;
-}
-
-:host ::ng-deep .td-2 {
-    padding: 10px !important;
-    color: rgba(34, 197, 94, 1) !important;
-}
-
-:host ::ng-deep .td-3 {
-    padding: 10px !important;
-    color: rgba(239, 68, 68, 1) !important;
-}
-
-:host ::ng-deep .form-container {
-    border-radius: 8px !important;
-    background-color: rgba(31, 41, 55, 1) !important;
-    box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1) !important;
-    margin-top: 24px !important;
-    padding: 24px !important;
-    width: 100% !important;
-}
-
-@media (max-width: 991px) {
-    :host ::ng-deep .form-container {
-        max-width: 100%;
-    }
-}
-
-:host ::ng-deep .form-group label {
-    color: rgba(156, 163, 175, 1) !important;
-    text-transform: uppercase !important;
-    font: 600 12px/1 Roboto, sans-serif !important;
-}
-
-:host ::ng-deep .form-group input,
-:host ::ng-deep .form-group textarea,
-:host ::ng-deep .form-group select {
-    width: 100% !important;
-    padding: 10px !important;
-    border-radius: 4px !important;
-    border: 1px solid rgba(55, 65, 81, 1) !important;
-    background-color: rgba(55, 65, 81, 1) !important;
-    color: rgba(255, 255, 255, 1) !important;
-    font: 400 16px Roboto, sans-serif !important;
-}
-
-:host ::ng-deep .form-group .text-danger {
-    color: rgba(239, 68, 68, 1) !important;
-}
-
-:host ::ng-deep .form-check-label {
-    color: rgba(156, 163, 175, 1) !important;
-    font: 600 12px/1 Roboto, sans-serif !important;
-}
-
-:host ::ng-deep .btn-primary {
-    background-color: rgba(34, 197, 94, 1) !important;
-    border: none !important;
-    padding: 10px 20px !important;
-    border-radius: 4px !important;
-    font: 600 16px Roboto, sans-serif !important;
-    color: rgba(255, 255, 255, 1) !important;
-    cursor: pointer !important;
-}
-
-:host ::ng-deep .btn-primary:disabled {
-    background-color: rgba(107, 114, 128, 1) !important;
-    cursor: not-allowed !important;
-}
+  }
+  

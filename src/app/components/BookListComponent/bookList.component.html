@@ -13,15 +13,15 @@
   </thead>
   <tbody class="tbody">
     <tr *ngFor="let book of books">
-      <td>{{ book.bookID }}</td>
-      <td>{{ book.title }}</td>
-      <td>{{ book.author }}</td>
-      <td>{{ book.genre }}</td>
-      <td>{{ book.publicationYear }}</td>
-      <td>{{ book.bookDescription }}</td>
-      <td>{{ book.isInStock ? 'In Stock' : 'Out of Stock' }}</td>
-      <td>
-        <button (click)="editBook(book)">Edit</button>
+      <td class="td">{{ book.bookID }}</td>
+      <td class="td">{{ book.title }}</td>
+      <td class="td">{{ book.author }}</td>
+      <td class="td">{{ book.genre }}</td>
+      <td class="td">{{ book.publicationYear }}</td>
+      <td class="td">{{ book.bookDescription }}</td>
+      <td class="td">{{ book.isInStock ? 'In Stock' : 'Out of Stock' }}</td>
+      <td class="td">
+        <button class="btn-primary" (click)="editBook(book)">Edit</button>
         <button (click)="deleteBook(book.bookID)">Delete</button>
         <button (click)="toggleStock(book)">Toggle Stock</button>
       </td>

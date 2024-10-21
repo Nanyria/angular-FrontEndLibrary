@@ -2,57 +2,59 @@
 <hr />
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-12">
     <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
       <div *ngIf="addBookForm.invalid && (addBookForm.dirty || addBookForm.touched)" class="text-danger">
         Please correct the errors in the form.
       </div>
 
-      <div class="form-group">
-        <label for="title" class="control-label">Title</label>
-        <input id="title" formControlName="title" class="form-control" />
-        <div *ngIf="addBookForm.get('title')!.invalid && (addBookForm.get('title')!.dirty || addBookForm.get('title')!.touched)" class="text-danger">
-          Title is required.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="author" class="control-label">Author</label>
-        <input id="author" formControlName="author" class="form-control" />
-        <div *ngIf="addBookForm.get('author')!.invalid && (addBookForm.get('author')!.dirty || addBookForm.get('author')!.touched)" class="text-danger">
-          Author is required.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="genre" class="control-label">Genre</label>
-        <input id="genre" formControlName="genre" class="form-control" />
-        <div *ngIf="addBookForm.get('genre')!.invalid && (addBookForm.get('genre')!.dirty || addBookForm.get('genre')!.touched)" class="text-danger">
-          Genre is required.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="publicationYear" class="control-label">Publication Year</label>
-        <input id="publicationYear" formControlName="publicationYear" class="form-control" />
-        <div *ngIf="addBookForm.get('publicationYear')!.invalid && (addBookForm.get('publicationYear')!.dirty || addBookForm.get('publicationYear')!.touched)" class="text-danger">
-          Publication Year is required and must be a valid year.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="bookDescription" class="control-label">Book Description</label>
-        <input id="bookDescription" formControlName="bookDescription" class="form-control" />
-      </div>
-
-      <div class="form-group form-check">
-        <input id="isInStock" type="checkbox" formControlName="isInStock" class="form-check-input" />
-        <label for="isInStock" class="form-check-label">In Stock</label>
-      </div>
-
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary" [disabled]="addBookForm.invalid">Create</button>
-      </div>
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th class="th">Title</th>
+            <th class="th-2">Author</th>
+            <th class="th">Genre</th>
+            <th class="th">Publication Year</th>
+            <th class="th">Book Description</th>
+            <th class="th">In Stock</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+            <td class="td">
+              <input id="title" formControlName="title" class="form-control" />
+              <div *ngIf="addBookForm.get('title')!.invalid && (addBookForm.get('title')!.dirty || addBookForm.get('title')!.touched)" class="text-danger">
+                Title is required.
+              </div>
+            </td>
+            <td class="td">
+              <input id="author" formControlName="author" class="form-control" />
+              <div *ngIf="addBookForm.get('author')!.invalid && (addBookForm.get('author')!.dirty || addBookForm.get('author')!.touched)" class="text-danger">
+                Author is required.
+              </div>
+            </td>
+            <td class="td">
+              <input id="genre" formControlName="genre" class="form-control" />
+              <div *ngIf="addBookForm.get('genre')!.invalid && (addBookForm.get('genre')!.dirty || addBookForm.get('genre')!.touched)" class="text-danger">
+                Genre is required.
+              </div>
+            </td>
+            <td class="td">
+              <input id="publicationYear" formControlName="publicationYear" class="form-control" />
+              <div *ngIf="addBookForm.get('publicationYear')!.invalid && (addBookForm.get('publicationYear')!.dirty || addBookForm.get('publicationYear')!.touched)" class="text-danger">
+                Publication Year is required and must be a valid year.
+              </div>
+            </td>
+            <td class="td">
+              <input id="bookDescription" formControlName="bookDescription" class="form-control" />
+            </td>
+            <td class="td">
+              <input id="isInStock" type="checkbox" formControlName="isInStock" class="form-check-input" />
+            </td>
+            <td class="td" colspan="2">
+              <button type="submit" class="btn btn-primary" [disabled]="addBookForm.invalid">Create</button>
+            </td>
+        </tbody>
+      </table>
     </form>
   </div>
 </div>
