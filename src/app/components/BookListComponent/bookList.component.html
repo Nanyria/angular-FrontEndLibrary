@@ -21,7 +21,7 @@
       <td>{{ book.bookDescription }}</td>
       <td>{{ book.isInStock ? 'In Stock' : 'Out of Stock' }}</td>
       <td>
-        <button (click)="populateForm(book)">Edit</button>
+        <button (click)="editBook(book)">Edit</button>
         <button (click)="deleteBook(book.bookID)">Delete</button>
         <button (click)="toggleStock(book)">Toggle Stock</button>
       </td>

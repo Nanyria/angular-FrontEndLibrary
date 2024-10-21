@@ -17,7 +17,7 @@ export class BookListComponent {
   @Output() onDelete = new EventEmitter<string>();
   @Output() onToggleStock = new EventEmitter<Book>();
 
-  populateForm(book: Book) {
+  editBook(book: Book) {
     this.onEdit.emit(book);
   }
 
@@ -27,5 +27,13 @@ export class BookListComponent {
 
   toggleStock(book: Book) {
     this.onToggleStock.emit(book);
+  }
+
+  noBooksAvailable(): boolean {
+    return this.books.length === 0;
+  }
+
+  handleBookClick(book: Book) {
+    // Perform some action when a book is clicked
   }
 }

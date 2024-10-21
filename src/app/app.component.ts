@@ -1,10 +1,13 @@
 //app.component.ts
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BookService } from './Services/book.services';
 import { Book } from './Models/book';
+import { CreateBookDTO } from './Models/CreateBookDTO';
+import { UpdateBookInfoDTO } from './Models/UpdateBookInfoDTO';
+import { UpdateBookStockDTO } from './Models/UpdateBookStockDTO';
 import { BookListComponent } from './components/BookListComponent/bookList.component';
 import { BookFormComponent } from './components/BookFormComponent/bookForm.component';
 import { LibraryComponent } from './components/library/library.component';
@@ -28,10 +31,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     LibraryComponent,
     HeaderComponent,
     SearchComponent
-  ]})
-export class AppComponent {
+  ]
+})
+export class AppComponent implements OnInit {
   title = 'angular-FrontEndLibrary';
-  books: Book[] = [];  // Use an object to store books
+  books: Book[] = [];
   editBook: Book | null = null;
 
   constructor(private bookService: BookService) {}
@@ -42,9 +46,9 @@ export class AppComponent {
 
   getAllBooks() {
     this.bookService.getAllBooks().subscribe(
-      (response: { isSuccess: boolean; result: Book[] }) => {  // Expecting result to be an array
+      (response: { isSuccess: boolean; result: Book[] }) => {
         if (response.isSuccess && Array.isArray(response.result)) {
-          this.books = response.result;  // Directly assign the array of books
+          this.books = response.result;
         } else {
           this.books = [];
         }
@@ -56,14 +60,31 @@ export class AppComponent {
     );
   }
 
-  handleFormSubmit(book: Book) {
+  handleFormSubmit(book: CreateBookDTO | UpdateBookInfoDTO) {
     if (this.editBook) {
-      this.bookService.updateBook(this.editBook.bookID, book).subscribe(() => {
+      const updatedBook: UpdateBookInfoDTO = {
+        title: book.title,
+        author: book.author,
+        genre: book.genre,
+        publicationYear: String(book.publicationYear), 
+        bookDescription: book.bookDescription
+      };
+
+      this.bookService.updateBook(this.editBook.bookID, updatedBook).subscribe(() => {
         this.getAllBooks();
         this.resetForm();
       });
     } else {
-      this.bookService.addBook(book).subscribe(() => {
+      const newBook: CreateBookDTO = {
+        title: book.title,
+        author: book.author,
+        genre: book.genre,
+        publicationYear: String(book.publicationYear), 
+        bookDescription: book.bookDescription,
+        isInStock: (book as CreateBookDTO).isInStock // Type assertion to access isInStock
+      };
+
+      this.bookService.addBook(newBook).subscribe(() => {
         this.getAllBooks();
         this.resetForm();
       });
@@ -77,7 +98,11 @@ export class AppComponent {
   }
 
   toggleStock(book: Book) {
-    this.bookService.updateBookStock(book.bookID, { isInStock: !book.isInStock }).subscribe(() => {
+    const stockUpdate: UpdateBookStockDTO = {
+      isInStock: !book.isInStock
+    };
+
+    this.bookService.updateBookStock(book.bookID, stockUpdate).subscribe(() => {
       this.getAllBooks();
     });
   }

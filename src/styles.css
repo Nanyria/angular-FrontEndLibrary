@@ -1,12 +1,5 @@
-
-header{
-  background-color: rgba(17, 24, 39, 1);
-  font-family: Roboto, sans-serif;
-  margin: 0; /* Ensure no default margin */
-  padding: 0; /* Ensure no default padding */
-  box-sizing: border-box; /* Ensure padding is included in the width */
-}
-body {
+/* General styles for header and body */
+header, body {
   background-color: rgba(17, 24, 39, 1);
   font-family: Roboto, sans-serif;
   margin: 0; /* Ensure no default margin */
@@ -18,6 +11,62 @@ body {
   box-sizing: inherit; /* Inherit box-sizing from body */
 }
 
+/* General container styles */
+.container {
+  border-radius: 8px;
+  background-color: rgba(31, 41, 55, 1);
+  box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+  margin-top: 24px;
+  padding: 24px;
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* General form group styles */
+.form-group label {
+  color: rgba(156, 163, 175, 1);
+  text-transform: uppercase;
+  font: 600 12px/1 Roboto, sans-serif;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(55, 65, 81, 1);
+  background-color: rgba(55, 65, 81, 1);
+  color: rgba(255, 255, 255, 1);
+  font: 400 16px Roboto, sans-serif;
+}
+
+.form-group .text-danger {
+  color: rgba(239, 68, 68, 1);
+}
+
+/* General button styles */
+.btn-primary {
+  background-color: rgba(34, 197, 94, 1);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font: 600 16px Roboto, sans-serif;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+.btn-primary:disabled {
+  background-color: rgba(107, 114, 128, 1);
+  cursor: not-allowed;
+}
+
+/* Specific styles for book list */
 .app-book-list .table {
   border-radius: 8px;
   background-color: rgba(31, 41, 55, 1);
