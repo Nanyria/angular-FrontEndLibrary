@@ -1,7 +1,11 @@
 
-  <div class="body">
-    <app-search></app-search>
-    <app-book-list
+<div class="table-body">
+  <div class="library-search-container">
+    <app-search (searchResults)="handleSearchResults($event)"></app-search>
+    <button class="add-new-book-button" (click)="addNewBook()">+ Add New Book</button>
+  </div>
+
+  <app-book-list
     [books]="books"
     (onEdit)="populateForm($event)"
     (onDelete)="deleteBook($event)"

@@ -22,8 +22,16 @@ export class BookService {
   }
 
   // Retrieve a single book by ID
-  getBookById(bookID: string): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}/${bookID}`);
+  getBookById(bookID: string): Observable<{ isSuccess: boolean; result: Book }> {
+    return this.http.get<{ isSuccess: boolean; result: Book }>(`${this.apiUrl}/${bookID}`);
+  }
+
+  getBookByTitle(title: string): Observable<{ isSuccess: boolean; result: Book[] }> {
+    return this.http.get<{ isSuccess: boolean; result: Book[] }>(`${this.apiUrl}/title/${title}`);
+  }
+
+  getBookByAuthor(author: string): Observable<{ isSuccess: boolean; result: Book[] }> {
+    return this.http.get<{ isSuccess: boolean; result: Book[] }>(`${this.apiUrl}/author/${author}`);
   }
 
   // Add a new book

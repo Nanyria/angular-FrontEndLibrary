@@ -1,28 +1,39 @@
-
 .search-container {
   display: flex;
   margin-top: 40px;
+  flex-direction: row; /* Change to row to align items horizontally */
   gap: 16px;
   font-size: 16px;
   color: rgba(178, 178, 178, 1);
   font-weight: 400;
   flex-wrap: wrap;
+  flex-grow: 1;
+  padding: 32px;
+  background-color: rgba(31, 41, 55, 1);
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
+
+
 
 @media (max-width: 991px) {
   .search-container {
+    flex-direction: column; /* Change to column for smaller screens */
     max-width: 100%;
   }
 }
 
 .search-by-title,
 .search-by-author {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   border-radius: 8px;
   background-color: rgba(31, 41, 55, 1);
   overflow: hidden;
   flex-grow: 1;
-  width: fit-content;
-  padding: 12px;
+  width: 100%;
+  padding: 16px;
 }
 
 @media (max-width: 991px) {
@@ -33,17 +44,29 @@
   }
 }
 
-.add-new-book-button {
-  border-radius: 8px;
-  background-color: rgba(31, 41, 55, 1);
-  color: white;
-  padding: 12px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 400;
+.search-by-title input,
+.search-by-author input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(55, 65, 81, 1);
+  border-radius: 4px;
+  background-color: rgba(55, 65, 81, 1);
+  color: rgba(255, 255, 255, 1);
+  font: 400 16px Roboto, sans-serif;
 }
 
-.add-new-book-button:hover {
-  background-color: rgba(41, 51, 65, 1);
+.search-by-title button,
+.search-by-author button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(34, 197, 94, 1);
+  color: rgba(255, 255, 255, 1);
+  font: 600 16px Roboto, sans-serif;
+  cursor: pointer;
+}
+
+.search-by-title button:hover,
+.search-by-author button:hover {
+  background-color: rgba(31, 41, 55, 1);
 }

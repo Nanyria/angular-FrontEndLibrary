@@ -1,4 +1,3 @@
-
 import { BookTableComponent } from './book-table/book-table.component';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,6 +6,8 @@ import { BookService } from '../../Services/book.services';
 import { HeaderComponent } from '../../components/library/header/header.component';
 import { SearchComponent } from '../../components/library/search/search.component';
 import { BookListComponent } from '../BookListComponent/bookList.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-library',
   templateUrl: './library.component.html',
@@ -18,8 +19,11 @@ export class LibraryComponent {
   books: Book[] = [];  // Use an object to store books
   editBook: Book | null = null;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private router: Router) {}
 
+  addNewBook() {
+    this.router.navigate(['/add-book']);
+  }
   ngOnInit(): void {
     this.getAllBooks();
   }
@@ -76,5 +80,9 @@ export class LibraryComponent {
 
   cancelEdit() {
     this.resetForm();
+  }
+
+  handleSearchResults(results: Book[]) {
+    this.books = results;
   }
 }

@@ -7,11 +7,15 @@ header{
   box-sizing: border-box; /* Ensure padding is included in the width */
 }
 body {
+  display: flex;
+  flex-direction: column; /* Ensure children are stacked vertically */
   background-color: rgba(17, 24, 39, 1);
   font-family: Roboto, sans-serif;
   margin: 0; /* Ensure no default margin */
-  padding: 0; /* Ensure no default padding */
+  padding: 32px;
   box-sizing: border-box; /* Ensure padding is included in the width */
+  width: 100%;
+  height: calc(100vh - 64px); /* Subtract padding from height */
 }
 
 *, *::before, *::after {
@@ -26,6 +30,28 @@ body {
   margin-top: 24px;
   padding: 24px;
   width: 100%;
+}
+
+.table-body {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+.sub-header {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  justify-content: center; /* Distribute space between items */
+  padding: 16px; /* Add some padding */
+  background-color: rgba(31, 41, 55, 1); /* Optional: Add background color */
+  color: rgba(255, 255, 255, 1); /* Optional: Add text color */
+}
+
+.header-text{
+  display: flex;
+  justify-self: center;
 }
 
 @media (max-width: 991px) {
@@ -128,4 +154,8 @@ body {
 .td {
   text-align: left;
   padding: 1px 24px; /* Ensure padding is applied */
+}
+.td-short {
+  text-align: left;
+  padding: 1px 5px; /* Ensure padding is applied */
 }
