@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   imports: [CommonModule, HeaderComponent, SearchComponent, BookTableComponent, BookListComponent]
 })
 export class LibraryComponent {
-  books: Book[] = [];  // Use an object to store books
+  books: Book[] = [];
   editBook: Book | null = null;
 
   constructor(private bookService: BookService, private router: Router) {}
@@ -24,15 +24,16 @@ export class LibraryComponent {
   addNewBook() {
     this.router.navigate(['/add-book']);
   }
+
   ngOnInit(): void {
     this.getAllBooks();
   }
 
   getAllBooks() {
     this.bookService.getAllBooks().subscribe(
-      (response: { isSuccess: boolean; result: Book[] }) => {  // Expecting result to be an array
+      (response: { isSuccess: boolean; result: Book[] }) => {
         if (response.isSuccess && Array.isArray(response.result)) {
-          this.books = response.result;  // Directly assign the array of books
+          this.books = response.result;
         } else {
           this.books = [];
         }
@@ -71,7 +72,7 @@ export class LibraryComponent {
   }
 
   populateForm(book: Book) {
-    this.editBook = book;
+    this.editBook = { ...book };
   }
 
   resetForm() {
@@ -84,5 +85,14 @@ export class LibraryComponent {
 
   handleSearchResults(results: Book[]) {
     this.books = results;
+  }
+
+  saveBook(book: Book) {
+    if (this.editBook) {
+      this.bookService.updateBook(this.editBook.bookID, book).subscribe(() => {
+        this.getAllBooks();
+        this.resetForm();
+      });
+    }
   }
 }

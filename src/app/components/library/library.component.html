@@ -7,9 +7,12 @@
 
   <app-book-list
     [books]="books"
+    [editBook]="editBook"
     (onEdit)="populateForm($event)"
     (onDelete)="deleteBook($event)"
     (onToggleStock)="toggleStock($event)"
+    (onSave)="saveBook($event)"
+    (onCancel)="cancelEdit()"
   ></app-book-list>
   <footer></footer>
 </div>

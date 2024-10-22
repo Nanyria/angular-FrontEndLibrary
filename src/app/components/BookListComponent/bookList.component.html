@@ -14,16 +14,33 @@
   <tbody class="tbody">
     <tr *ngFor="let book of books">
       <td class="td">{{ book.bookID }}</td>
-      <td class="td">{{ book.title }}</td>
-      <td class="td">{{ book.author }}</td>
-      <td class="td">{{ book.genre }}</td>
-      <td class="td">{{ book.publicationYear }}</td>
-      <td class="td">{{ book.bookDescription }}</td>
+      <td class="td">
+        <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.title" />
+        <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.title }}</span>
+      </td>
+      <td class="td">
+        <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.author" />
+        <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.author }}</span>
+      </td>
+      <td class="td">
+        <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.genre" />
+        <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.genre }}</span>
+      </td>
+      <td class="td">
+        <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.publicationYear" />
+        <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.publicationYear }}</span>
+      </td>
+      <td class="td">
+        <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.bookDescription" />
+        <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.bookDescription }}</span>
+      </td>
       <td class="td">{{ book.isInStock ? 'In Stock' : 'Out of Stock' }}</td>
       <td class="td">
-        <button class="btn-primary" (click)="editBook(book)">Edit</button>
-        <button (click)="deleteBook(book.bookID)">Delete</button>
-        <button (click)="toggleStock(book)">Toggle Stock</button>
+        <button *ngIf="editBook && editBook.bookID === book.bookID" class="btn-primary" (click)="saveBook(editBook)">Save</button>
+        <button *ngIf="editBook && editBook.bookID === book.bookID" (click)="cancelEdit()">Cancel</button>
+        <button *ngIf="!editBook || editBook.bookID !== book.bookID" class="btn-primary" (click)="editBookDetails(book)">Edit</button>
+        <button *ngIf="!editBook || editBook.bookID !== book.bookID" (click)="deleteBook(book.bookID)">Delete</button>
+        <button *ngIf="!editBook || editBook.bookID !== book.bookID" (click)="toggleStock(book)">Toggle Stock</button>
       </td>
     </tr>
   </tbody>

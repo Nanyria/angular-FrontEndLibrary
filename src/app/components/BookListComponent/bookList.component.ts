@@ -1,7 +1,6 @@
-
-
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Book } from '../../Models/book';
 
 @Component({
@@ -9,15 +8,18 @@ import { Book } from '../../Models/book';
   templateUrl: './bookList.component.html',
   styleUrls: ['./bookList.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, FormsModule]
 })
 export class BookListComponent {
   @Input() books: Book[] = [];
+  @Input() editBook: Book | null = null;
   @Output() onEdit = new EventEmitter<Book>();
   @Output() onDelete = new EventEmitter<string>();
   @Output() onToggleStock = new EventEmitter<Book>();
+  @Output() onSave = new EventEmitter<Book>();
+  @Output() onCancel = new EventEmitter<void>();
 
-  editBook(book: Book) {
+  editBookDetails(book: Book) {
     this.onEdit.emit(book);
   }
 
@@ -29,11 +31,11 @@ export class BookListComponent {
     this.onToggleStock.emit(book);
   }
 
-  noBooksAvailable(): boolean {
-    return this.books.length === 0;
+  saveBook(book: Book) {
+    this.onSave.emit(book);
   }
 
-  handleBookClick(book: Book) {
-    // Perform some action when a book is clicked
+  cancelEdit() {
+    this.onCancel.emit();
   }
 }
