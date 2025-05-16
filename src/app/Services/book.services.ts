@@ -1,56 +1,54 @@
 //book.services.ts
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Book } from '../Models/book';
-import { CreateBookDTO } from '../Models/CreateBookDTO';
-import { UpdateBookInfoDTO } from '../Models/UpdateBookInfoDTO';
-import { UpdateBookStockDTO } from '../Models/UpdateBookStockDTO';
+import { Book, BookDto, StatusHistoryItem } from '../Models/interfaces';
+import { BookStatusEnum } from './Enums/enum.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookService {
-  private apiUrl = 'https://localhost:7291/api/Library'; 
+  private apiUrl = 'https://localhost:7291/api/Book';
 
   constructor(private http: HttpClient) {}
 
-  // Retrieve all books
-  getAllBooks(): Observable<{ isSuccess: boolean; result: Book[] }> {
-    return this.http.get<{ isSuccess: boolean; result: Book[] }>(this.apiUrl);
-  }
-
-  // Retrieve a single book by ID
   getBookById(bookID: string): Observable<{ isSuccess: boolean; result: Book }> {
     return this.http.get<{ isSuccess: boolean; result: Book }>(`${this.apiUrl}/${bookID}`);
   }
 
-  getBookByTitle(title: string): Observable<{ isSuccess: boolean; result: Book[] }> {
-    return this.http.get<{ isSuccess: boolean; result: Book[] }>(`${this.apiUrl}/title/${title}`);
-  }
-
-  getBookByAuthor(author: string): Observable<{ isSuccess: boolean; result: Book[] }> {
-    return this.http.get<{ isSuccess: boolean; result: Book[] }>(`${this.apiUrl}/author/${author}`);
-  }
-
-  // Add a new book
-  addBook(book: CreateBookDTO): Observable<any> {
+  addBook(book: BookDto): Observable<any> {
     return this.http.post<any>(this.apiUrl, book);
   }
 
-  // Update an existing book by ID
-  updateBook(bookID: string, updatedBook: UpdateBookInfoDTO): Observable<any> {
+  updateBook(bookID: string, updatedBook: BookDto): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${bookID}`, updatedBook);
   }
 
-  // Update book stock status
-  updateBookStock(bookID: string, stockUpdate: UpdateBookStockDTO): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/stock/${bookID}`, stockUpdate);
+  updateBookStatus(
+    bookID: string,
+    userID: string,
+    bookStatus: BookStatusEnum,
+    notes?: string
+  ): Observable<any> {
+    const params = new HttpParams()
+      .set('userId', userID.toString())
+      .set('bookStatus', bookStatus)
+      .set('notes', notes || '');
+
+    return this.http.put<any>(`${this.apiUrl}/status/${bookID}`, {}, { params });
   }
 
-  // Delete a book by ID
   deleteBook(bookID: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${bookID}`);
   }
+
+  getBookHistory(bookID: string): Observable<{ isSuccess: boolean; result: StatusHistoryItem[] }> {
+    return this.http.get<{ isSuccess: boolean; result: StatusHistoryItem[] }>(
+      `${this.apiUrl}/history/${bookID}`
+    );
+  }
+
 }

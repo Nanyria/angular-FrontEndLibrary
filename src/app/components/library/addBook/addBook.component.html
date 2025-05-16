@@ -13,12 +13,11 @@ Add New Book
         <table class="table">
           <thead class="thead">
             <tr>
-              <th class="th">Title</th>
-              <th class="th-2">Author</th>
+              <th class="th">Titel</th>
+              <th class="th-2">Författare</th>
               <th class="th">Genre</th>
-              <th class="th">Publication Year</th>
-              <th class="th">Book Description</th>
-              <th class="th">In Stock</th>
+              <th class="th">Publiceringsår</th>
+              <th class="th">Bokbeskrivning</th>
             </tr>
           </thead>
           <tbody class="tbody">
@@ -26,35 +25,35 @@ Add New Book
               <td class="td">
                 <input id="title" formControlName="title" class="form-control" />
                 <div *ngIf="addBookForm.get('title')!.invalid && (addBookForm.get('title')!.dirty || addBookForm.get('title')!.touched)" class="text-danger">
-                  Title is required.
+                  Titel måste anges.
                 </div>
               </td>
               <td class="td">
                 <input id="author" formControlName="author" class="form-control" />
                 <div *ngIf="addBookForm.get('author')!.invalid && (addBookForm.get('author')!.dirty || addBookForm.get('author')!.touched)" class="text-danger">
-                  Author is required.
+                  Författare måste anges.
                 </div>
               </td>
               <td class="td">
-                <input id="genre" formControlName="genre" class="form-control" />
+                <select id="genre" formControlName="genre" class="form-control">
+                  <option value="" disabled>Select genre</option>
+                  <option *ngFor="let genre of genreOptions" [value]="genre">{{ GenreDisplayNames[genre] }}</option>
+                </select>
                 <div *ngIf="addBookForm.get('genre')!.invalid && (addBookForm.get('genre')!.dirty || addBookForm.get('genre')!.touched)" class="text-danger">
-                  Genre is required.
+                  Genre måste anges.
                 </div>
               </td>
               <td class="td">
                 <input id="publicationYear" formControlName="publicationYear" class="form-control" />
                 <div *ngIf="addBookForm.get('publicationYear')!.invalid && (addBookForm.get('publicationYear')!.dirty || addBookForm.get('publicationYear')!.touched)" class="text-danger">
-                  Publication Year is required and must be a valid year.
+                  Publiceringsår måste anges.
                 </div>
               </td>
               <td class="td">
                 <input id="bookDescription" formControlName="bookDescription" class="form-control" />
               </td>
-              <td class="td">
-                <input id="isInStock" type="checkbox" formControlName="isInStock" class="form-check-input" />
-              </td>
               <td class="td" colspan="2">
-                <button type="submit" class="btn btn-primary" [disabled]="addBookForm.invalid">Create</button>
+                <button type="submit" class="btn btn-primary" [disabled]="addBookForm.invalid">Lägg till</button>
               </td>
             </tr>
           </tbody>
@@ -65,5 +64,5 @@ Add New Book
 </div>
 
 <div>
-  <a routerLink="/library">Back to View all Books</a>
+  <a routerLink="/library">Tillbaka till biblioteket</a>
 </div>

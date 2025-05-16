@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Book } from '../../../Models/book';
+import { Book } from '../../../Models/interfaces';
 import { BookListComponent } from '../../BookListComponent/bookList.component';
 
 @Component({

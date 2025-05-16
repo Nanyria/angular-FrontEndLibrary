@@ -1,93 +1,12 @@
 <!--app.component.html-->
 
 
-<header>
+<header *ngIf="isAuthenticated()">
+  <app-nav></app-nav>
   <app-header></app-header>
 </header>
 <div class="body">
   <router-outlet></router-outlet>
   <footer></footer>
+</div>
 
-<!-- book-list.component.html -->
-<!-- <h1>View All Books</h1>
-<p>
-    <a asp-action="AddBook" class="btn btn-outline-primary">
-        <i class="fa fa-plus"></i> Add new book to Library
-    </a>
-</p>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Genre</th>
-            <th>Publication Year</th>
-            <th>In Stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let book of books">
-            <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.genre }}</td>
-            <td>{{ book.publicationYear }}</td>
-            <td>{{ book.isInStock ? 'Yes' : 'No' }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="container">
-    <h1>Library</h1>
-  
-    <div class="search">
-      <input [(ngModel)]="searchText" placeholder="Search books by title" />
-      <button (click)="searchBooksByTitle()">Search</button>
-    </div>
-  
-    <h2>All Books</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>In Stock</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let book of books">
-          <td>{{ book.title }}</td>
-          <td>{{ book.author }}</td>
-          <td>{{ book.isInStock ? 'Yes' : 'No' }}</td>
-          <td>
-            <button (click)="editBookStock(book)">Toggle Stock</button>
-            <button (click)="editBook = book">Edit</button>
-            <button (click)="deleteBook(book.bookID)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <h2>Add Book</h2>
-    <div>
-      <input [(ngModel)]="newBook.title" placeholder="Title" />
-      <input [(ngModel)]="newBook.author" placeholder="Author" />
-      <label>
-        <input type="checkbox" [(ngModel)]="newBook.isInStock" />
-        In Stock
-      </label>
-      <button (click)="addBook()">Add</button>
-    </div>
-  
-    <div *ngIf="editBook">
-      <h2>Edit Book</h2>
-      <input [(ngModel)]="editBook.title" placeholder="Title" />
-      <input [(ngModel)]="editBook.author" placeholder="Author" />
-      <label>
-        <input type="checkbox" [(ngModel)]="editBook.isInStock" />
-        In Stock
-      </label>
-      <button (click)="updateBook(editBook)">Save</button>
-      <button (click)="editBook = null">Cancel</button>
-    </div>
-  </div> -->

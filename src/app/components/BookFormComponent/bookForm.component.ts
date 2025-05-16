@@ -3,7 +3,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Book } from '../../Models/book';
+import { BookDto } from '../../Models/interfaces';
+import { BookStatusEnum, GenreEnums } from '../../Services/Enums/enum.service';
 
 @Component({
   selector: 'app-book-form',
@@ -13,12 +14,17 @@ import { Book } from '../../Models/book';
   imports: [CommonModule, FormsModule]
 })
 export class BookFormComponent {
-  @Input() editBook: Book | null = null;
-  @Output() onSubmit = new EventEmitter<Book>();
+  @Input() editBook: BookDto | null = null;
+  @Output() onSubmit = new EventEmitter<BookDto>();
   @Output() onCancel = new EventEmitter<void>();
 
-  book: Book = {  bookID: '', title: '', author: '', genre: '', bookDescription: '', publicationYear: '', isInStock: false };
-
+  book: BookDto = {  
+    title: '', 
+    author: '', 
+    genre: GenreEnums.None, // Default to "None"
+    bookDescription: '', 
+    publicationYear: '', 
+  };
   ngOnChanges() {
     if (this.editBook) {
       this.book = { ...this.editBook };
@@ -33,6 +39,6 @@ export class BookFormComponent {
   }
 
   resetForm() {
-    this.book = { bookID: '', title: '', author: '', genre: '', bookDescription: '', publicationYear: '', isInStock: false };
+    this.book = { title: '', author: '', genre: GenreEnums.None, bookDescription: '', publicationYear: '' };
   }
 }

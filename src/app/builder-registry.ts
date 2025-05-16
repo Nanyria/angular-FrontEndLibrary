@@ -3,8 +3,9 @@ import { BookFormComponent } from "./components/BookFormComponent/bookForm.compo
 import { BookListComponent } from "./components/BookListComponent/bookList.component";
 import { BookTableComponent } from "./components/library/book-table/book-table.component";
 import { Counter } from "./components/counter.component";
-import { HeaderComponent } from "./components/library/header/header.component";
+import { HeaderComponent } from "./components/header/header.component";
 import { LibraryComponent } from "./components/library/library.component";
+import { NavComponent } from "./components/nav/nav.component";
 import { SearchComponent } from "./components/library/search/search.component";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
@@ -39,22 +40,26 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
-    component: Counter,
-    name: "Counter",
-    inputs: [
-      {
-        name: "initialCount",
-        type: "number",
-      },
-    ],
-  },
-  {
     component: HeaderComponent,
     name: "HeaderComponent",
   },
   {
     component: LibraryComponent,
     name: "LibraryComponent",
+  },
+  {
+    component: NavComponent,
+    name: "NavComponent",
+    inputs: [
+      {
+        name: "selector",
+        type: "string",
+      },
+      {
+        name: "standalone",
+        type: "boolean",
+      },
+    ],
   },
   {
     component: SearchComponent,

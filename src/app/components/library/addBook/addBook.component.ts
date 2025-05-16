@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BookService } from '../../../Services/book.services';
-import { CreateBookDTO } from '../../../Models/CreateBookDTO';
+import { BookDto } from '../../../Models/interfaces';
+import { GenreEnums, GenreDisplayNames } from '../../../Services/Enums/enum.service'; // Adjust path if needed
 
 @Component({
   selector: 'app-add-book',
@@ -18,7 +19,12 @@ import { CreateBookDTO } from '../../../Models/CreateBookDTO';
 })
 export class AddBookComponent implements OnInit {
   addBookForm!: FormGroup;
+  GenreEnums = GenreEnums;
+  GenreDisplayNames = GenreDisplayNames;
+  genreOptions = Object.values(GenreEnums).filter(v => typeof v === 'number') as GenreEnums[];
 
+
+  
   constructor(
     private fb: FormBuilder,
     private bookService: BookService,
@@ -32,30 +38,29 @@ export class AddBookComponent implements OnInit {
       genre: ['', Validators.required],
       publicationYear: ['', [Validators.required, Validators.pattern('^[0-9]{4}$')]],
       bookDescription: [''],
-      isInStock: [false]
     });
   }
 
   onSubmit(): void {
     if (this.addBookForm.valid) {
-      const newBook: CreateBookDTO = {
+      console.log('Selected genre value:', this.addBookForm.get('genre')!.value);
+      const newBook: BookDto = {
         title: this.addBookForm.get('title')!.value,
         author: this.addBookForm.get('author')!.value,
-        genre: this.addBookForm.get('genre')!.value,
+        genre: Number(this.addBookForm.get('genre')!.value) as unknown as GenreEnums,
         publicationYear: this.addBookForm.get('publicationYear')!.value,
         bookDescription: this.addBookForm.get('bookDescription')!.value,
-        isInStock: this.addBookForm.get('isInStock')!.value
       };
-
-      this.bookService.addBook(newBook).subscribe(
-        response => {
-          console.log('Book added successfully', response);
-          this.router.navigate(['/library']);
-        },
-        error => {
-          console.error('Error adding book', error);
-        }
-      );
+console.log(newBook);
+    this.bookService.addBook(newBook).subscribe({
+      next: response => {
+        console.log('Book added successfully', response);
+        this.router.navigate(['/library']);
+      },
+      error: error => {
+        console.error('Error adding book', error);
+      }
+    });
     }
   }
 }

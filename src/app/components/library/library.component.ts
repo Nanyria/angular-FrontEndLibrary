@@ -1,25 +1,27 @@
-import { BookTableComponent } from './book-table/book-table.component';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Book } from '../../Models/book';
+import { Book, BookDto } from '../../Models/interfaces';
+import { LibraryService } from '../../Services/library.services';
 import { BookService } from '../../Services/book.services';
-import { HeaderComponent } from '../../components/library/header/header.component';
+import { BookStatusEnum } from '../../Services/Enums/enum.service';
+import { HeaderComponent } from '../header/header.component';
 import { SearchComponent } from '../../components/library/search/search.component';
 import { BookListComponent } from '../BookListComponent/bookList.component';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-library',
   templateUrl: './library.component.html',
   styleUrls: ['./library.component.css'],
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SearchComponent, BookTableComponent, BookListComponent]
+  imports: [CommonModule, SearchComponent, BookListComponent]
 })
 export class LibraryComponent {
   books: Book[] = [];
   editBook: Book | null = null;
 
-  constructor(private bookService: BookService, private router: Router) {}
+  constructor(private libraryService: LibraryService, private bookService: BookService, private router: Router) {}
 
   addNewBook() {
     this.router.navigate(['/add-book']);
@@ -30,10 +32,13 @@ export class LibraryComponent {
   }
 
   getAllBooks() {
-    this.bookService.getAllBooks().subscribe(
+    console.log('Fetching all books...');
+    this.libraryService.getAllBooks().subscribe(
       (response: { isSuccess: boolean; result: Book[] }) => {
+        console.log('Books fetched:', response);
         if (response.isSuccess && Array.isArray(response.result)) {
           this.books = response.result;
+          console.log('Books array:', this.books);
         } else {
           this.books = [];
         }
@@ -65,9 +70,11 @@ export class LibraryComponent {
     });
   }
 
-  toggleStock(book: Book) {
-    this.bookService.updateBookStock(book.bookID, { isInStock: !book.isInStock }).subscribe(() => {
-      this.getAllBooks();
+  updateStatus(event: { bookID: string; userID: string; bookStatus: BookStatusEnum }) {
+    const { bookID, userID, bookStatus } = event;
+
+    this.bookService.updateBookStatus(bookID, userID, bookStatus, 'Status updated via dropdown').subscribe(() => {
+      this.getAllBooks(); // Refresh the book list after updating the status
     });
   }
 

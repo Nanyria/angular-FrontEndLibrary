@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BookService } from '../../../Services/book.services';
-import { Book } from '../../../Models/book';
+import { LibraryService } from '../../../Services/library.services';
+import { Book } from '../../../Models/interfaces';
 
 @Component({
   selector: 'app-search',
@@ -16,10 +16,10 @@ export class SearchComponent {
   author: string = '';
   @Output() searchResults = new EventEmitter<Book[]>();
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: LibraryService) {}
 
   searchByTitle() {
-    this.bookService.getBookByTitle(this.title).subscribe((response) => {
+    this.bookService.getBooksByTitle(this.title).subscribe((response) => {
       if (response.isSuccess) {
         this.searchResults.emit(response.result);
       }
@@ -27,7 +27,7 @@ export class SearchComponent {
   }
 
   searchByAuthor() {
-    this.bookService.getBookByAuthor(this.author).subscribe((response) => {
+    this.bookService.getBooksByAuthor(this.author).subscribe((response) => {
       if (response.isSuccess) {
         this.searchResults.emit(response.result);
       }

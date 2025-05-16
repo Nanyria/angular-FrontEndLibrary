@@ -1,14 +1,15 @@
-<table class="table">
+<table class="table-custom">
   <thead class="thead">
     <tr>
-      <th class="th">ID</th>
-      <th class="th-2">Title</th>
-      <th class="th-3">Author</th>
-      <th class="th-7">Genre</th> 
-      <th class="th-4">Year Published</th>
-      <th class="th-5">Description</th>
-      <th class="th-6">Stock</th>
-      <th class="th-8">Actions</th>
+      <th class="th-1">ID</th>
+      <th class="th-2">Titel</th>
+      <th class="th-2">Författare</th>
+      <th class="th-2">Genre</th>
+      <th class="th-2">Publiceringsår</th>
+      <th class="th-2">Beskrivning</th>
+      <th class="th-4">Status</th>
+      <th class="th-3">Edit</th>
+      <th class="th-4">Delete</th>
     </tr>
   </thead>
   <tbody class="tbody">
@@ -22,10 +23,19 @@
         <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.author" />
         <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.author }}</span>
       </td>
-      <td class="td">
-        <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.genre" />
-        <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.genre }}</span>
-      </td>
+<td class="td">
+  <select *ngIf="editBook && editBook.bookID === book.bookID"
+          [(ngModel)]="editBook.genre"
+          name="genre-{{book.bookID}}">
+    <option *ngFor="let genre of genreOptions" [value]="genre">
+      {{ GenreDisplayNames[genre] }}
+    </option>
+  </select>
+  <span *ngIf="!editBook || editBook.bookID !== book.bookID">
+    {{ GenreDisplayNames[book.genre] || book.genre }}
+  </span>
+</td>
+
       <td class="td">
         <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.publicationYear" />
         <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.publicationYear }}</span>
@@ -34,14 +44,26 @@
         <input *ngIf="editBook && editBook.bookID === book.bookID" [(ngModel)]="editBook.bookDescription" />
         <span *ngIf="!editBook || editBook.bookID !== book.bookID">{{ book.bookDescription }}</span>
       </td>
-      <td class="td">{{ book.isInStock ? 'In Stock' : 'Out of Stock' }}</td>
       <td class="td">
-        <button *ngIf="editBook && editBook.bookID === book.bookID" class="btn-primary" (click)="saveBook(editBook)">Save</button>
-        <button *ngIf="editBook && editBook.bookID === book.bookID" (click)="cancelEdit()">Cancel</button>
-        <button *ngIf="!editBook || editBook.bookID !== book.bookID" class="btn-primary" (click)="editBookDetails(book)">Edit</button>
-        <button *ngIf="!editBook || editBook.bookID !== book.bookID" (click)="deleteBook(book.bookID)">Delete</button>
-        <button *ngIf="!editBook || editBook.bookID !== book.bookID" (click)="toggleStock(book)">Toggle Stock</button>
+        <!-- Status: show dropdown if editing, else show Swedish name -->
+        <select *ngIf="editBook && editBook.bookID === book.bookID"
+                [(ngModel)]="editBook.bookStatus"
+                name="status-{{book.bookID}}">
+          <option *ngFor="let status of bookStatuses" [value]="status">
+        {{ BookStatusDisplayNames[status] }}
+          </option>
+        </select>
+        <span *ngIf="!editBook || editBook.bookID !== book.bookID">
+          {{ BookStatusDisplayNames[book.bookStatus] }}
+        </span>
       </td>
+      <td class="td-action">
+        <button *ngIf="editBook && editBook.bookID === book.bookID" class="btn-save" (click)="saveBook(editBook)"><i class="bi bi-floppy"></i></button>
+        <button *ngIf="editBook && editBook.bookID === book.bookID" class="btn-cancel"(click)="cancelEdit()"><i class="bi bi-x-circle"></i></button>
+        <button *ngIf="!editBook || editBook.bookID !== book.bookID" class="btn-edit" (click)="editBookDetails(book)"><i class="bi bi-pen"></i></button>
+      </td>
+      <td class="td-action">
+        <button *ngIf="!editBook || editBook.bookID !== book.bookID" class="btn-delete"(click)="deleteBook(book.bookID)"><i class="bi bi-trash"></i></button>
     </tr>
   </tbody>
 </table>
